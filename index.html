@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Coordinate Plotter</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body class="dark">
+  <div id="app">
+
+    <!-- ── Side panel ───────────────────────────────── -->
+    <aside id="panel">
+
+      <div class="panel-header">
+        <h1>3D Plotter</h1>
+        <label class="theme-toggle" title="Toggle light / dark theme">
+          <input type="checkbox" id="themeToggle" />
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+          <span class="toggle-label" id="themeLabel">Light</span>
+        </label>
+      </div>
+
+      <!-- Actions -->
+      <section class="control-section">
+        <button id="btnRefresh" class="btn btn-primary">↻ Refresh</button>
+      </section>
+
+      <!-- Labels -->
+      <section class="control-section">
+        <h2>Labels</h2>
+        <label class="checkbox-label">
+          <input type="checkbox" id="showLabels" />
+          Show point labels
+        </label>
+      </section>
+
+      <!-- Axis visibility + labels combined -->
+      <section class="control-section">
+        <h2>Axes</h2>
+        <div class="input-row">
+          <input type="checkbox" id="axisX" checked title="Show X axis" />
+          <label for="labelX">X</label>
+          <input type="text" id="labelX" value="X" class="axis-label-input" maxlength="40" />
+        </div>
+        <div class="input-row">
+          <input type="checkbox" id="axisY" checked title="Show Y axis" />
+          <label for="labelY">Y</label>
+          <input type="text" id="labelY" value="Y" class="axis-label-input" maxlength="40" />
+        </div>
+        <div class="input-row">
+          <input type="checkbox" id="axisZ" checked title="Show Z axis" />
+          <label for="labelZ">Z</label>
+          <input type="text" id="labelZ" value="Z" class="axis-label-input" maxlength="40" />
+        </div>
+      </section>
+
+      <!-- Status / stats -->
+      <section class="control-section" id="statusSection">
+        <h2>Status</h2>
+        <div id="statusText" class="status-text">Loading…</div>
+        <pre id="statsText" class="stats-text"></pre>
+      </section>
+
+    </aside>
+
+    <!-- ── Plot area ─────────────────────────────────── -->
+    <main id="plotArea">
+      <div id="plot"></div>
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
